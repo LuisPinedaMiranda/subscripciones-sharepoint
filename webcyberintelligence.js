@@ -15,10 +15,10 @@ const tenantId = 'ce6c3307-7b45-4cd2-a7ad-037c08909f1d';
 
 
 //TODO parametros para crear una suscripcion
-const webhookUrl = 'https://api.soc360.cyberpeace.tech/api/v1/webhook/blueteam';
-const resource = `/drives/b!kNNVupK4OESrzN_tNJ2JWIgqkvyialRImqfWS530pF8enbC5sfM0QrpmZZL-IW2J/root`;
+const webhookUrl = 'https://webhookprueba.ddns.net/sharepointCyberIntelligence';
+const resource = `/drives/b!OPW09zb2_0yfKBe9foHcnK8u9Kmh-51Iq1uFWQ3AQqFNu9YMl6a2S44qkF0CLTOu/root`;
 const currentDate = new Date();
-const expirationDate =  new Date(currentDate.getTime() + 30 * 24 * 60 * 60 * 1000);;
+const expirationDate =  new Date(currentDate.getTime() + 30 * 24 * 60 * 60 * 1000);
 const subscriptionExpirationDateTime = expirationDate.toISOString();
 
 
@@ -54,7 +54,7 @@ async function createWebhookSubscription() {
 //todo metododpara eliminar una suscripcion
 async function deletesuscription(){
     // Definir el subscriptionId de la suscripción a eliminar
-  const subscriptionId = '8e704602-f0ee-482c-8090-9cb2bc756cf5'; // ID de la suscripción
+  const subscriptionId = '6a58db34-8a5d-4afa-9fa4-c2e426a841dc'; // ID de la suscripción
 
   // Eliminar la suscripción
   client
@@ -69,7 +69,7 @@ async function deletesuscription(){
 }
 
 //optimize: ruta del webhook en proceso para descragar todos los archivos
-app.post('/webhook', (req, res) => {
+app.post('/sharepointCyberIntelligence', (req, res) => {
   const validationToken = req.query.validationToken;
   
   if (validationToken) { //validacion de la suscripcion
@@ -82,8 +82,8 @@ app.post('/webhook', (req, res) => {
     
     //si hay una notificacion pasa
     if(notification){
-        const MainPath = 'sites/cybereye.sharepoint.com,ba55d390-b892-4438-abcc-dfed349d8958/drives/b!kNNVupK4OESrzN_tNJ2JWIgqkvyialRImqfWS530pF8enbC5sfM0QrpmZZL-IW2J/root:/SOC/Cyberpeace/Clientes'
-        const Customers = ['Pavisa Luxe - CP','CSB- CP','DeAcero - CP','Exitus - CP','Interproteccion - CP'];    //'RCH-Bodega - CP','Grupo Real - CP'
+        const MainPath = 'sites/cybereye.sharepoint.com,f7b4f538-f636-4cff-9f28-17bd7e81dc9c,a9f42eaf-fba1-489d-ab5b-85590dc042a1/drives/b!OPW09zb2_0yfKBe9foHcnK8u9Kmh-51Iq1uFWQ3AQqFNu9YMl6a2S44qkF0CLTOu/root:/Ciberinteligencia/Clientes'
+        const Customers = ['DEACERO'];    //'RCH-Bodega - CP','Grupo Real - CP'
         const informes = 'Informe Mensual';
         const fechaActual = new Date();
         const year = fechaActual.getFullYear();
@@ -182,6 +182,6 @@ https.createServer({
   /**
    * //todo estos metodos estan comentados ya que uno crea una suscripcion despues de que se crea la suscripcion ya no es necesario porque creamas 
   */
-  //createWebhookSubscription();
+  createWebhookSubscription();
   //deletesuscription();
 });

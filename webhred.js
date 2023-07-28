@@ -15,8 +15,8 @@ const tenantId = 'ce6c3307-7b45-4cd2-a7ad-037c08909f1d';
 
 
 //TODO parametros para crear una suscripcion
-const webhookUrl = 'https://webhookprueba.ddns.net/webhook';
-const resource = `/drives/b!XC7j71OwhUuqg4EcNtG40OUq3tnTlzJLj0cqgHIqp6UCUoag20qgRajk6gfcdSjc/root`;
+const webhookUrl = 'https://webhookprueba.ddns.net/webhookRedTeam';
+const resource = `/drives/b!XC7j71OwhUuqg4EcNtG40OUq3tnTlzJLj0cqgHIqp6WRGYPxM07DT7juKRXxTGgw/root`;
 const currentDate = new Date();
 const expirationDate =  new Date(currentDate.getTime() + 30 * 24 * 60 * 60 * 1000);;
 const subscriptionExpirationDateTime = expirationDate.toISOString();
@@ -69,7 +69,7 @@ async function deletesuscription(){
 }
 
 //optimize: ruta del webhook en proceso para descragar todos los archivos
-app.post('/webhook', (req, res) => {
+app.post('/webhookRedTeam', (req, res) => {
   const validationToken = req.query.validationToken;
   
   if (validationToken) { //validacion de la suscripcion
@@ -82,9 +82,9 @@ app.post('/webhook', (req, res) => {
     
     //si hay una notificacion pasa
     if(notification){
-        const MainPath = 'sites/cybereye.sharepoint.com,efe32e5c-b053-4b85-aa83-811c36d1b8d0,d9de2ae5-97d3-4b32-8f47-2a80722aa7a5/drives/b!XC7j71OwhUuqg4EcNtG40OUq3tnTlzJLj0cqgHIqp6UCUoag20qgRajk6gfcdSjc/root:/Red team/Clientes'
-        const Customers = ['DeAcero -CP'];    //'RCH-Bodega - CP','Grupo Real - CP'
-        const informes = 'Informe Mensual';
+        const MainPath = 'sites/cybereye.sharepoint.com,efe32e5c-b053-4b85-aa83-811c36d1b8d0,d9de2ae5-97d3-4b32-8f47-2a80722aa7a5/drives/b!XC7j71OwhUuqg4EcNtG40OUq3tnTlzJLj0cqgHIqp6WRGYPxM07DT7juKRXxTGgw/root:/Clientes'
+        const Customers = ['DEACERO'];    //'RCH-Bodega - CP','Grupo Real - CP'
+        const informes = 'Informes de pentesting & AV';
         const fechaActual = new Date();
         const year = fechaActual.getFullYear();
         
